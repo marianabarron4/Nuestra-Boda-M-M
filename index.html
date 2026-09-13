@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nuestra Boda M&M</title>
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #f7f3ed;
+    font-family: Georgia, serif;
+}
+
+#portada {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #f7f3ed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: opacity 1.2s ease;
+}
+
+.contenido-portada {
+    padding: 35px;
+}
+
+.iniciales {
+    font-size: 58px;
+    margin-bottom: 12px;
+}
+
+.titulo {
+    font-size: 24px;
+    letter-spacing: 3px;
+    margin-bottom: 35px;
+}
+
+button {
+    border: 1px solid #555;
+    background: transparent;
+    padding: 16px 32px;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    border-radius: 40px;
+}
+
+.indicacion {
+    margin-top: 18px;
+    font-size: 13px;
+    opacity: .7;
+}
+
+#invitacion {
+    display: none;
+}
+
+.canva {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-top: 800%;
+    overflow: hidden;
+}
+
+.canva iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: 0;
+}
+</style>
+</head>
+
+<body>
+
+<div id="portada">
+    <div class="contenido-portada">
+        <div class="iniciales">M & M</div>
+        <div class="titulo">NUESTRA BODA</div>
+
+        <button onclick="abrirInvitacion()">
+            ♡ ABRIR INVITACIÓN ♡
+        </button>
+
+        <div class="indicacion">
+            Toca para comenzar
+        </div>
+    </div>
+</div>
+
+
+<audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+
+<div id="invitacion">
+
+    <div class="canva">
+        <iframe
+        loading="lazy"
+        src="https://www.canva.com/design/DAHUlSnWzjE/xYTh5v2Avh4tx_mNruaZbA/view?embed"
+        allowfullscreen>
+        </iframe>
+    </div>
+
+</div>
+
+
+<script>
+function abrirInvitacion() {
+
+    const musica = document.getElementById("musica");
+    const portada = document.getElementById("portada");
+    const invitacion = document.getElementById("invitacion");
+
+    musica.play().catch(error => {
+        console.log("El navegador bloqueó el audio:", error);
+    });
+
+    invitacion.style.display = "block";
+
+    portada.style.opacity = "0";
+
+    setTimeout(() => {
+        portada.style.display = "none";
+    }, 1200);
+}
+</script>
+
+</body>
+</html>
